@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HowTo Layout</title>
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+        font-size: 50px;
+      }
+
+      body {
+        background: black;
+        color: white;
+      }
+
+      .header {
+        background: red;
+        position: sticky;
+        top: 0;
+        display: block;
+      }
+
+      .rest {
+        background: blue;
+        height: 300vh;
+        grid-area: footer;
+      }
+
+      .hero {
+        padding: 0.2rem;
+      }
+
+      .hero > h2 {
+        line-height: 3rem;
+        font-size: 3rem;
+      }
+
+      body {
+        display: grid;
+        grid-template-areas:
+          "header"
+          "content"
+          "footer";
+        grid-template-rows: min-content 1fr 100px;
+      }
+
+      .spacer {
+        height: 100vh;
+        grid-area: header / content / footer;
+      }
+
+      .header {
+        grid-area: header;
+      }
+
+      .hero {
+        background: green;
+        grid-area: content;
+      }
+
+      .footer {
+        background: #ffff00;
+        color: black;
+        grid-area: footer;
+        position: fixed;
+        width: 70%;
+        height: 100px;
+        bottom: 0;
+      }
+
+      p {
+        padding: 0.2rem;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="spacer"></div>
+    <section class="header">header fixed atop of arbitrary height</section>
+    <main class="hero">
+      <h2>problem</h2>
+      <p>
+        green area should fill what is left in the viewport between the red and
+        yellow areas
+      </p>
+      <p>blue area immediately follows green area</p>
+    </main>
+    <section class="footer">footer</section>
+    <section class="rest">
+      <p>first p</p>
+      <p>second p</p>
+    </section>
+  </body>
+</html>
